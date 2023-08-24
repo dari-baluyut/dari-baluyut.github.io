@@ -1,0 +1,39 @@
+<html lang="eng">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="pokedex" data-delay="1s">
+        <img id="pokedex-top" src="images/pokedex/pokedex-top.png">
+        <img id="pokedex-bottom" src="images/pokedex/pokedex-bottom.png">
+        <img id="background" src="images/pokedex/background.png">
+        <div id="dexLoad" class="loading">
+            <img id="l1" src="images/pokedex/loading1.png">
+            <img id="l2" src="images/pokedex/loading2.png">
+            <img id="l3" src="images/pokedex/loading3.png">
+            <img id="l4" src="images/pokedex/loading4.png">
+        </div>
+        <div class="pokemon">
+            <div id="idWrap">
+                <span id="pId"></span>
+            </div>
+            <div id="nameWrap">
+                <span id="pName"></span>
+            </div>
+            <img id="pImg" src="">
+            <img id="type1" src="">
+            <img id="type2" src="">
+        </div>
+        <a class="button" id="homeButton" href="index.html">Back</a>
+        <button class="button" id="prevButton" onclick="prev(); reset_animation(); loading();">
+            <ion-icon name="chevron-back-outline" size="large"></ion-icon>
+        </button>
+        <button class="button" id="nextButton" onclick="next(); reset_animation(); loading();">
+            <ion-icon name="chevron-forward-outline" size="large"></ion-icon>
+        </button>
+    </div>
+    <script src="main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

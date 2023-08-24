@@ -1,0 +1,47 @@
+<html lang="eng">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="home" data-delay="1s">
+        <img id="pokedex-top" src="images/pokedex/pokedex-top.png">
+        <img id="pokedex-bottom" src="images/pokedex/pokedex-bottom.png">
+        <img id="background" src="images/pokedex/background.png">
+        <div id="searchPage">
+            <div id="searchMenu">
+                <a class="button" id="homeButton" href="index.html">Back</a>
+                <form id="search" action="">
+                    <input id="searchName" type="text" placeholder="Pokemon Name">
+                    <button id="searchNameButton" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div id="searchLoad" class="loading">
+                <img id="l1" src="images/pokedex/loading1.png">
+                <img id="l2" src="images/pokedex/loading2.png">
+                <img id="l3" src="images/pokedex/loading3.png">
+                <img id="l4" src="images/pokedex/loading4.png">
+            </div>
+            <!-- <div id="noResult" class="hidden">
+                <span id="errorMessage">Pokemon not found</span>
+            </div> -->
+            <div id="pokedex" data-delay="1s">
+                <div class="pokemon">
+                    <div id="idWrap">
+                        <span id="pId"></span>
+                    </div>
+                    <div id="nameWrap">
+                        <span id="pName"></span>
+                    </div>
+                    <img id="pImg" src="">
+                    <img id="type1" src="">
+                    <img id="type2" src="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="searchPokemon.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
