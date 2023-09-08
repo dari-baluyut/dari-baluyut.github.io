@@ -23,7 +23,11 @@ body {
 }
 
 #navBar {
+    position: fixed;
+    top: 0;
+    width: 100%;
     text-align: center;
+    background-image: linear-gradient(rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 0.9), rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0));
 }
 
 nav ul li {
@@ -62,6 +66,10 @@ nav ul li a:hover::after {
 .header-text h1 {
     font-size: 60px;
     margin-top: 20px;
+}
+
+.header-text h1 span {
+    color: #ff7ce9;
 }
 
 /* ---------- About ---------- */
@@ -132,9 +140,25 @@ nav ul li a:hover::after {
 }
 
 .tab-contents ul li {
-    list-style: none;
     margin: 10px 0;
 }
+
+.noStyle {
+    list-style: none;
+}
+
+.eduDes {
+    font-size: 14px;
+    margin-left: 40px;
+}
+
+/* .langDes {
+    font-size: 14px;
+    list-style: none;
+    margin-left: 20px;
+} */
+
+
 
 .tab-contents ul li span {
     color: #ff7ce9;
