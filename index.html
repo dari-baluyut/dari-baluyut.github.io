@@ -1,11 +1,129 @@
+<!DOCTYPE html>
 <html lang="eng">
 <head>
     <link rel="stylesheet" href="style.css">
+    <title>Darius Baluyut</title>
+    <script src="https://kit.fontawesome.com/b91667f595.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="homeMenu">
-        <a class="homeMenuButton" id="homeButton" href="pokedex/index.html">Pokedex</a>
-        <a class="homeMenuButton" id="homeButton" href="test/index.html">test button</a>
+    <div id="header">
+        <div class="container">
+            <nav id="navBar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Graduate Software Engineer</p>
+                <h1>Darius Baluyut</h1>
+            </div>
+        </div>
     </div>
+
+    <!-- ---------- About ---------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <div class="circular--portrait">
+                        <img src="images/me.PNG">
+                    </div>
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>AAAAAAAAAAAA</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                        <p class="tab-links" onclick="opentab('languages')">Languages</p>
+                    </div>
+
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Skills</span><br>Designing Web App Interfaces</li>
+                            <li><span>Skills</span><br>Designing Web App Interfaces</li>
+                            <li><span>Skills</span><br>Designing Web App Interfaces</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Education</span><br>Designing Web App Interfaces</li>
+                            <li><span>Education</span><br>Designing Web App Interfaces</li>
+                            <li><span>Education</span><br>Designing Web App Interfaces</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="languages">
+                        <ul>
+                            <li><span>Languages</span><br>Designing Web App Interfaces</li>
+                            <li><span>Languages</span><br>Designing Web App Interfaces</li>
+                            <li><span>Languages</span><br>Designing Web App Interfaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- Personal Projects ---------- -->
+    <div id="personalProjects">
+        <div class="container">
+            <h1 class="sub-title">Personal Projects</h1>
+            <div class="projects-list">
+                <div>
+                    <h2><a href="pokedex/index.html">Pokedex</a></h2>
+                </div>
+                <div>
+                    <h2><a class="homeMenuButton" id="homeButton" href="test/index.html">test button</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- Contacts ---------- -->
+    <div id="contacts">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contacts</h1>
+                    <p><i class="fa-solid fa-envelope"></i> daribaluyut@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i> 0415 627 078</p>
+                    <p><i class="fa-brands fa-linkedin"></i> <a href="linkedin.com/in/darius-baluyut">darius-baluyut</a></p>
+                    <p><i class="fa-brands fa-github"></i> <a href="https://github.com/dari-baluyut">dari-baluyut</a></p>
+                </div>
+                <div class="contact-right">
+                    <form>
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        
+        function opentab(tabname) {
+            for(tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+
+            for(tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+    </script>
 </body>
 </html>
