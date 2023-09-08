@@ -8,12 +8,14 @@
 <body>
     <div id="header">
         <nav id="navBar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contacts</a></li>
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#personalProjects">Projects</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+                <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
             </ul>
+            <i class="fa-solid fa-bars" onclick="openMenu()"></i>
         </nav>
         <div class="container">
             <div class="header-text">
@@ -91,16 +93,18 @@
                     <h1 class="sub-title">Contacts</h1>
                     <p><i class="fa-solid fa-envelope"></i> daribaluyut@gmail.com</p>
                     <p><i class="fa-solid fa-phone"></i> 0415 627 078</p>
-                    <p><i class="fa-brands fa-linkedin"></i> <a href="linkedin.com/in/darius-baluyut">darius-baluyut</a></p>
-                    <p><i class="fa-brands fa-github"></i> <a href="https://github.com/dari-baluyut">dari-baluyut</a></p>
+                    <a class="contact-links" href="https://www.linkedin.com/in/darius-baluyut/"><p class="contact-p"><i class="fa-brands fa-linkedin"></i> darius-baluyut</p></a>
+                    <a class="contact-links" href="https://github.com/dari-baluyut"><p class="contact-p"><i class="fa-brands fa-github"></i> dari-baluyut</p></a>
+                    <div class="downloadBtn"><a class="btn btn1" href="images/resume.pdf" download>Download Resume</a></div>
                 </div>
                 <div class="contact-right">
-                    <form>
+                    <form name="submit-to-google-sheet">
                         <input type="text" name="Name" placeholder="Your Name" required>
                         <input type="email" name="Email" placeholder="Your Email" required>
                         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                        <button type="submit">Submit</button>
+                        <button type="submit" class="btn btn2">Submit</button>
                     </form>
+                    <span id="msg"></span>
                 </div>
             </div>
         </div>
@@ -124,6 +128,39 @@
             document.getElementById(tabname).classList.add("active-tab");
         }
 
+    </script>
+
+    <script>
+
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openMenu() {
+            sidemenu.style.right = "0";
+        }
+
+        function closeMenu() {
+            sidemenu.style.right = "-200px"
+        }
+
+    </script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzlG5mmjKtMFulEnOydROoCIZJHTaNxUVFtIDuyopkqbxrRIY88s3jxdTy3I0_Icdyz/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+    
+        form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully!"
+                setTimeout(function() {
+                    msg.innerHTML = ""
+                }, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
     </script>
 </body>
 </html>

@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #080808;
     color: #fff;
@@ -27,7 +31,8 @@ body {
     top: 0;
     width: 100%;
     text-align: center;
-    background-image: linear-gradient(rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 0.9), rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0));
+    background-image: linear-gradient(rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 1), rgba(8, 8, 8, 0));
+    z-index: 1;
 }
 
 nav ul li {
@@ -59,7 +64,7 @@ nav ul li a:hover::after {
 }
 
 .header-text {
-    margin-top: 20%;
+    margin-top: 30%;
     font-size: 30px;
 }
 
@@ -122,6 +127,7 @@ nav ul li a:hover::after {
     font-weight: 500;
     cursor: pointer;
     position: relative;
+    color: white;
 }
 
 .tab-links::after {
@@ -152,14 +158,6 @@ nav ul li a:hover::after {
     margin-left: 40px;
 }
 
-/* .langDes {
-    font-size: 14px;
-    list-style: none;
-    margin-left: 20px;
-} */
-
-
-
 .tab-contents ul li span {
     color: #ff7ce9;
     font-size: 14px;
@@ -186,6 +184,10 @@ nav ul li a:hover::after {
 }
 
 /* ---------- Contacts ---------- */
+#contacts {
+    padding-bottom: 60px;
+}
+
 .contact-left {
     flex-basis: 35%;
 }
@@ -194,6 +196,178 @@ nav ul li a:hover::after {
     margin-top: 30px;
 }
 
+.contact-left p i {
+    color: #ff7ce9;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
 .contact-right {
     flex-basis: 60%;
+}
+
+.contact-links {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.contact-p:hover {
+    color: #ff00d4;
+    text-decoration: none;
+}
+
+.contact-p:hover i.fa-brands {
+    color: #ff00d4;
+}
+
+.btn {
+    display: inline-block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #ff7ce9;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.btn:hover {
+    background: #ff00d4;
+}
+
+.btn.btn2 {
+    display: inline-block;
+    background: #ff00d4;
+}
+
+.contact-right form {
+    width: 100%;
+}
+
+form input, form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    resize: none;
+}
+
+form .btn2 {
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* ---------- CSS for small screens ---------- */
+nav .fa-solid {
+    display: none;
+}
+
+@media only screen and (max-device-width: 600px) {
+    #header {
+        width: 100%;
+        height: 22vh;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(images/background.gif);
+        background-size: cover;
+        overflow: hidden;
+        padding-bottom: 60px;
+    }
+
+    #header-text {
+        padding-bottom: 50px;
+    }
+
+    nav .fa-solid {
+        display: block;
+        font-size: 25px;
+        top: 25px;
+        right: 25px;
+        text-align: right;
+        position: absolute;
+    }
+
+    nav ul {
+        background: #ff00d4;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 25px;
+    }
+
+    nav ul .fa-solid {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+    .sub-title {
+        font-size: 60px;
+    }
+
+    .about-col-1, .about-col-2 {
+        flex-basis: 100%;
+    }
+
+    .about-col-1 {
+        margin-bottom: 30px;
+    }
+
+    .circular--portrait {
+        position: relative;
+        width: 70%;
+        height: 600px;
+        overflow: hidden;
+        border-radius: 15px;
+        margin: auto;
+    }
+
+    .circular--portrait img {
+        width: 100%;
+        height: auto;
+    }
+
+    .about-col-2 {
+        font-size: 14px;
+    }
+
+    .tab-links {
+        font-size: 36px;
+        margin-right: 20px;
+    }
+
+    .contact-left, .contact-right {
+        flex-basis: 100%;
+    }
+
+    .contact-left p {
+        margin-left: 20px;
+    }
+
+    .downloadBtn {
+        text-align: center;
+    }
+}
+
+#msg {
+    color: #ff7ce9;
+    margin-top: -40px;
+    display: block;
 }
