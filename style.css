@@ -183,6 +183,140 @@ nav ul li a:hover::after {
     margin-top: 50px;
 }
 
+.project {
+    position: relative;
+    width: 200px;
+}
+
+.front {
+    transition: 250ms;
+}
+
+.front img {
+    max-width: 100%;
+}
+
+.projImg {
+    border-radius: .5em;
+}
+
+.projName {
+    margin: .75em 0;
+}
+
+.projLang {
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+.back {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(35%);
+}
+
+.projInfo {
+    font-size: 14px;
+}
+
+.projStatus {
+    text-align: center;
+    font-size: 16px;
+    color: #ff7ce9;
+}
+
+.projLang2 {
+    font-size: 16px;
+    margin: .5em 0;
+}
+
+.projLinkContainer {
+    text-align: center;
+}
+
+.projLink {
+    cursor: pointer;
+    display: inline-block;
+    width: fit-content;
+    border: 1px solid #ff7ce9;
+    padding: 6px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.5s;
+    margin-top: 10px;
+}
+
+.projLink:hover {
+    background: #ff00d4;
+}
+
+.projBackground {
+    background: #151515;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transform: scale(.2, .9);
+    opacity: 0;
+    border-radius: .5em;
+}
+
+.project:hover {
+    .front {
+        transform: translateY(-40%) scale(.8);
+    }
+
+    .projName {
+        animation: projectName 250ms forwards;
+    }
+
+    .projLang {
+        opacity: 0;
+    }
+
+    .back {
+        opacity: 1;
+        transition: transform 250ms ease, opacity 150ms linear;
+        transform: translateY(0);
+    }
+
+    .projBackground {
+        transition: transform 200ms cubic-bezier(.21, 1.06, .81, 1.01), opacity 100ms linear;
+        opacity: 1;
+        transform: scale(1.4, 1.2);
+    }
+}
+
+@keyframes projectName {
+    0% {
+        text-align: left;
+        opacity: 1;
+    }
+
+    20% {
+        text-align: left;
+        opacity: 0;
+    }
+
+    60% {
+        text-align: center;
+        opacity: 0;
+        transform: scale(1.2);
+    }
+
+    100% {
+        text-align: center;
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
 /* ---------- Contacts ---------- */
 #contacts {
     padding-bottom: 60px;
@@ -298,12 +432,13 @@ nav .fa-solid {
         background: #ff00d4;
         position: fixed;
         top: 0;
-        right: -200px;
+        right: 0;
+        transform: translateX(200px);
         width: 200px;
         height: 100vh;
         padding-top: 50px;
         z-index: 2;
-        transition: right 0.5;
+        transition: transform 250ms ease;
     }
 
     nav ul li {
@@ -351,6 +486,15 @@ nav .fa-solid {
     .tab-links {
         font-size: 36px;
         margin-right: 20px;
+    }
+
+    .projects-list {
+        display: block;
+    }
+
+    .project {
+        width: 70%;
+        margin: auto;
     }
 
     .contact-left, .contact-right {

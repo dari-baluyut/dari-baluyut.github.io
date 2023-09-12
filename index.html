@@ -75,11 +75,76 @@
         <div class="container">
             <h1 class="sub-title">Personal Projects</h1>
             <div class="projects-list">
-                <div>
-                    <h2><a href="pokedex/index.html">Pokedex</a></h2>
+                <div class="project">
+                    <div class="front">
+                        <img class="projImg" src="images/pokedexCover.PNG" alt="">
+                        <h3 class="projName">Pokedex</h3>
+                        <p class="projLang">HTML, CSS, JavaScript, PokeAPI</p>
+                    </div>
+                    <div class="back">
+                        <div class="projInfo">
+                            <h3 class="projStatus">In Progress</h3>
+                            <p class="projLang2">HTML, CSS, JavaScript, PokeAPI</p>
+                            <div class="projAbout">
+                                <ul>
+                                    <li>Based on the Pokedex from the Pokemon Games and Anime</li>
+                                    <li>View Pokemon stats and info</li>
+                                    <li>Uses public PokeAPI to retrieve Pokemon data</li>
+                                </ul>
+                            </div>
+                            <div class="projLinkContainer">
+                                <a class="projLink" href="pokedex/index.html">Open Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="projBackground"></div>
                 </div>
-                <div>
-                    <h2><a class="homeMenuButton" id="homeButton" href="test/index.html">test button</a></h2>
+
+                <div class="project">
+                    <div class="front">
+                        <img class="projImg" src="images/pokedexCover.PNG" alt="">
+                        <h3 class="projName">Test</h3>
+                        <p class="projLang">HTML, CSS</p>
+                    </div>
+                    <div class="back">
+                        <div class="projInfo">
+                            <h3 class="projStatus">What</h3>
+                            <p class="projLang2">HTML, CSS</p>
+                            <div class="projAbout">
+                                <ul>
+                                    <li>This is a test project</li>
+                                    <li>It does nothing</li>
+                                </ul>
+                            </div>
+                            <div class="projLinkContainer">
+                                <a class="projLink" href="test/index.html">Open Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="projBackground"></div>
+                </div>
+
+                <div class="project">
+                    <div class="front">
+                        <img class="projImg" src="images/pokedexCover.PNG" alt="">
+                        <h3 class="projName">Test 2</h3>
+                        <p class="projLang">HTML, CSS</p>
+                    </div>
+                    <div class="back">
+                        <div class="projInfo">
+                            <p class="projLang2">HTML, CSS</p>
+                            <div class="projAbout">
+                                <ul>
+                                    <li>This is a test project</li>
+                                    <li>It does nothing</li>
+                                </ul>
+                            </div>
+                            <div class="projLinkContainer">
+                                <a class="projLink" href="test/index.html">Open Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="projBackground"></div>
                 </div>
             </div>
         </div>
@@ -135,11 +200,11 @@
         var sidemenu = document.getElementById("sidemenu");
 
         function openMenu() {
-            sidemenu.style.right = "0";
+            sidemenu.style.transform = "translateX(0)";
         }
 
         function closeMenu() {
-            sidemenu.style.right = "-200px"
+            sidemenu.style.transform = "translateX(200px)"
         }
 
     </script>
