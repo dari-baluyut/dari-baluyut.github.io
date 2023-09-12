@@ -211,7 +211,9 @@ nav ul li a:hover::after {
 
 .back {
     opacity: 0;
+    visibility: hidden;
     position: absolute;
+    height: 50%;
     top: 45%;
     left: 0;
     right: 0;
@@ -237,6 +239,12 @@ nav ul li a:hover::after {
 
 .projLinkContainer {
     text-align: center;
+    bottom: -20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .projLink {
@@ -250,7 +258,6 @@ nav ul li a:hover::after {
     color: white;
     transition: background-color 0.5s;
     margin-top: 10px;
-    bottom: 0;
 }
 
 .projLink:hover {
@@ -285,6 +292,7 @@ nav ul li a:hover::after {
 
     .back {
         opacity: 1;
+        visibility: visible;
         transition: transform 250ms ease, opacity 150ms linear;
         transform: translateY(0);
     }
