@@ -15,7 +15,7 @@ let velocityX = 0;
 let velocityY = 0;
 let foodX;
 let foodY;
-let currDirection;
+let curDirection;
 let score = 0;
 let highScore = 0;
 let snake = [{x: unitSize * 5, y: unitSize* 5}];
@@ -83,19 +83,19 @@ function drawFood() {
 };
 
 function moveSnake() {
-    if(currDirection == "up") {
+    if(curDirection == "up") {
         velocityX = 0;
         velocityY = -unitSize;
     }
-    if(currDirection == "down") {
+    if(curDirection == "down") {
         velocityX = 0;
         velocityY = unitSize;
     }
-    if(currDirection == "left") {
+    if(curDirection == "left") {
         velocityX = -unitSize;
         velocityY = 0;
     }
-    if(currDirection == "right") {
+    if(curDirection == "right") {
         velocityX = unitSize;
         velocityY = 0;
     }
@@ -136,16 +136,16 @@ function changeDirection(event) {
     const goingRight = (velocityX == unitSize);
 
     if(keyPressed == UP && !goingDown) {
-        currDirection = "up";
+        curDirection = "up";
     }
     if(keyPressed == DOWN && !goingUp) {
-        currDirection = "down";
+        curDirection = "down";
     }
     if(keyPressed == LEFT && !goingRight) {
-        currDirection = "left";
+        curDirection = "left";
     }
     if(keyPressed == RIGHT && !goingLeft) {
-        currDirection = "right";
+        curDirection = "right";
     }
 };
 
@@ -175,6 +175,11 @@ function displayGameOver() {
         highScore = score;
     }
 
+    context.globalAlpha = 0.5;
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, gameWidth, gameHeight);
+    context.globalAlpha = 1;
+
     context.font = "bold 60px Poppins, sans-serif";
     context.fillStyle = "white";
     context.textAlign = "center";
@@ -201,7 +206,7 @@ function resetGame() {
     score = 0;
     velocityX = 0;
     velocityY = 0;
-    currDirection = "";
+    curDirection = "";
     snake = [{x: unitSize * 5, y: unitSize * 5}];
     clearTimeout(timeout);
     gameStart();
