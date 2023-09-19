@@ -1,5 +1,13 @@
-const canvas = document.getElementById('board');
+const canvas = document.querySelector("#board");
 const context = canvas.getContext('2d');
+const gameOverText = document.getElementById("gameOverText");
+const highScoreText = document.getElementById("highScoreText");
+const highScorePoints = document.getElementById("highScorePoints");
+var timeout = setTimeout; 
+const gameWidth = canvas.width;
+const gameHeight = canvas.height;
+let gameRunning = true;
+let highScore = 0;
 
 context.scale(20, 20);
 
@@ -102,9 +110,6 @@ function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
             if(value !== 0) {
-                // square border?
-                // context.fillStyle = 'black';
-                // context.fillRect(x, y, 1, 1);
                 context.fillStyle = colors[value];
                 context.fillRect((x + 0.1) + offset.x, (y + 0.1) + offset.y, 0.8, 0.8);
             }
@@ -135,23 +140,45 @@ function playerDrop() {
 }
 
 function playerMove(direction) {
-    player.pos.x += direction;
-    
-    if(collision(board, player)) {
-        player.pos.x -= direction;
+    if(gameRunning) {
+        player.pos.x += direction;
+        
+        if(collision(board, player)) {
+            player.pos.x -= direction;
+        }
     }
 }
 
 function playerReset() {
     const shapes = 'TIJOLSZ';
-    player.matrix = createShape(shapes[shapes.length * Math.random() | 0]);
-    player.pos.y = 0;
-    player.pos.x = (board[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
+    if(gameRunning) {
+        player.matrix = createShape(shapes[shapes.length * Math.random() | 0]);
+        player.pos.y = 0;
+        player.pos.x = (board[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
 
-    if(collision(board, player)) {
-        board.forEach(row => row.fill(0));
-        player.score = 0;
-        updateScore();
+        if(collision(board, player)) {
+            displayGameOver();
+        }
+    }
+}
+
+function displayGameOver() {
+    gameRunning = false;
+
+    if(player.score > highScore) {
+        highScore = player.score;
+    }
+
+    context.globalAlpha = 0.6;
+    context.beginPath();
+    context.fillStyle = 'black';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.globalAlpha = 1;
+
+    gameOverText.style.visibility = 'visible';
+    if(highScore != 0) {
+        highScorePoints.innerText = highScore;
+        highScoreText.style.visibility = 'visible';
     }
 }
 
@@ -204,12 +231,29 @@ function update(time = 0) {
         playerDrop();
     }
 
-    draw();
+    if(gameRunning) {
+        draw();
+    }
+
     requestAnimationFrame(update);
 }
 
 function updateScore() {
     document.getElementById('scorePoints').innerText = player.score;
+}
+
+function resetGame() {
+    gameRunning = true;
+
+    gameOverText.style.visibility = 'hidden';
+    highScoreText.style.visibility = 'hidden';
+
+    player.score = 0;
+    board.forEach(row => row.fill(0));
+
+    playerReset();
+    updateScore();
+    update();
 }
 
 const colors = [
@@ -232,23 +276,26 @@ const player = {
 };
 
 document.addEventListener('keydown', event => {
-    if(event.key == "ArrowLeft") {
-        playerMove(-1);
-    }
-    if(event.key == "ArrowRight") {
-        playerMove(1);
-    }
-    if(event.key == "ArrowDown") {
-        playerDrop();
-    }
-    if(event.key == "z") {
-        playerRotate(-1);
-    }
-    if(event.key == "ArrowUp") {
-        playerRotate(1);
+    if(gameRunning) {
+        if(event.key == "ArrowLeft") {
+            playerMove(-1);
+        }
+        if(event.key == "ArrowRight") {
+            playerMove(1);
+        }
+        if(event.key == "ArrowDown") {
+            playerDrop();
+        }
+        if(event.key == "z") {
+            playerRotate(-1);
+        }
+        if(event.key == "ArrowUp") {
+            playerRotate(1);
+        }
     }
 });
 
+resetBtn.addEventListener("click", resetGame);
 playerReset();
 updateScore();
 update();

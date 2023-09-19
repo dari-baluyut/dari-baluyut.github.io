@@ -5,14 +5,182 @@ body {
     color: white;
 }
 
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 #board {
+    z-index: 10;
     background: #151515;
     border: solid .2em white;
     height: 70vh;
 }
 
+#gameOverText {
+    visibility: hidden;
+    position: absolute;
+    top: 40%;
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 15;
+}
+
+#highScoreText {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 15;
+    color: #ff00d4;
+}
+
 #scoreText {
-    margin-top: 20px;
+    margin: 10px;
+}
+
+
+#resetBtn {
+    font-size: 22px;
+    color: #ff00d4;
+    text-shadow: 0 0 15px #ff00d4;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border: rgb(255, 0, 212, 0.5) 0.1em solid;
+    padding: 0.25em 0.65em;
+    position: relative;
+    transition: 0.5s;
+}
+
+#resetBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff00d4;
+    z-index: -1;
+    opacity: 0;
+}
+
+#resetBtn span {
+    position: absolute;
+    background: #ff00d4;
+    width: 37px;
+    height: 37px;
+    pointer-events: none;
+    transform: translateY(-130%);
+    z-index: -2;
+    opacity: 0;
+}
+
+#resetBtn span:nth-child(1) {
+    background: orange;
+    left: 0;
+    clip-path: polygon(0 0, 33% 0, 33% 66%, 66% 66%, 66% 100%, 0 100%);
+}
+
+#resetBtn span:nth-child(2) {
+    background: green;
+    left: 12px;
+    clip-path: polygon(0 0, 33% 0, 33% 33%, 66% 33%, 66% 100%, 33% 100%, 33% 66%, 0 66%);
+}
+
+#resetBtn span:nth-child(3) {
+    background: yellow;
+    left: 36px;
+    clip-path: polygon(0 33%, 66% 33%, 66% 100%, 0% 100%);
+}
+
+#resetBtn span:nth-child(4) {
+    background: blue;
+    right: 12px;
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 33% 100%, 33% 66%, 66% 66%);
+}
+
+#resetBtn span:nth-child(5) {
+    background: cyan;
+    right: 0;
+    clip-path: polygon(66% 0, 100% 0, 100% 100%, 66% 100%);
+}
+
+#resetBtn span:nth-child(6) {
+    background: red;
+    left: 24px;
+    clip-path: polygon(0 0, 66% 0, 66% 33%, 0 33%);
+
+}
+
+#resetBtn span:nth-child(7) {
+    background: purple;
+    left: 48px;
+    clip-path: polygon(0 0, 66% 0, 66% 66%, 33% 66%, 33% 33%, 0 33%);
+}
+
+#btnContainer:hover {
+    #resetBtn {
+        color: white;
+        border: rgb(255, 0, 212, 0) 0.1em solid;
+        text-shadow: 0 0 0px #ff00d4;
+    }
+
+    #resetBtn::before {
+        opacity: 1;
+        transition: opacity 150ms linear 1.25s;
+        box-shadow: 
+            0 0 10px #ff00d4,
+            0 0 30px #ff00d4,
+            0 0 60px #ff00d4;
+    }
+
+    #resetBtn span:nth-child(1) {
+        opacity: 1;
+        transition: transform 250ms ease, opacity 150ms linear;
+        transform: translateY(-5px);
+    }
+
+    #resetBtn span:nth-child(2) {
+        opacity: 1;
+        transition: transform 250ms ease 0.15s, opacity 150ms linear 0.15s;
+        transform: translateY(-5px);
+    }
+
+    #resetBtn span:nth-child(3) {
+        opacity: 1;
+        transition: transform 250ms ease 0.60s, opacity 150ms linear 0.60s;
+        transform: translateY(-5px);
+    }
+
+    #resetBtn span:nth-child(4) {
+        opacity: 1;
+        transition: transform 250ms ease 0.45s, opacity 150ms linear 0.45s;
+        transform: translateY(-5px);
+    }
+
+    #resetBtn span:nth-child(5) {
+        opacity: 1;
+        transition: transform 250ms ease 0.30s, opacity 150ms linear 0.30s;
+        transform: translateY(-5px);
+    }
+
+    #resetBtn span:nth-child(6) {
+        opacity: 1;
+        transition: transform 250ms ease 0.90s, opacity 150ms linear 0.90s;
+        transform: translateY(-5px);
+    }
+
+    #resetBtn span:nth-child(7) {
+        opacity: 1;
+        transition: transform 250ms ease 0.75s, opacity 150ms linear 0.75s;
+        transform: translateY(-5px);
+    }
 }
 
 .backButton {
