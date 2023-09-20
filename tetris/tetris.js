@@ -1,5 +1,7 @@
 const canvas = document.querySelector("#board");
 const context = canvas.getContext('2d');
+const shapeHeld = document.querySelector("#holding");
+const shapeHeldContext = shapeHeld.getContext('2d');
 const gameOverText = document.getElementById("gameOverText");
 const highScoreText = document.getElementById("highScoreText");
 const highScorePoints = document.getElementById("highScorePoints");
@@ -8,8 +10,12 @@ const gameWidth = canvas.width;
 const gameHeight = canvas.height;
 let gameRunning = true;
 let highScore = 0;
+let curShape;
+let cleared = false;
+let multiplier = 1;
 
 context.scale(20, 20);
+shapeHeldContext.scale(20, 20);
 
 function checkCompletedRows() {
     let rowCount = 1;
@@ -24,10 +30,20 @@ function checkCompletedRows() {
         const row = board.splice(y, 1)[0].fill(0);
         board.unshift(row);
         ++y;
-
-        player.score += rowCount * 10;
+        
+        player.score += rowCount * 10 * multiplier;
         rowCount *= 2;
+
+        cleared = true;
     }
+
+    if(cleared) {
+        multiplier += multiplier;
+    } else {
+        multiplier = 1;
+    }
+
+    cleared = false;
 }
 
 function collision(board, player) {
@@ -50,6 +66,15 @@ function createMatrix(width, height) {
     }
 
     return matrix;
+}
+
+function createHeldMatrix(width, height) {
+    const heldMatrix = [];
+    while(height--) {
+        heldMatrix.push(new Array(width).fill(0));
+    }
+
+    return heldMatrix;
 }
 
 function createShape(type) {
@@ -117,6 +142,20 @@ function drawMatrix(matrix, offset) {
     });
 }
 
+function drawHeldMatrix(matrix) {
+    shapeHeldContext.fillStyle = '#151515';
+    shapeHeldContext.fillRect(0, 0, shapeHeld.width, shapeHeld.height);
+
+    matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if(value !== 0) {
+                shapeHeldContext.fillStyle = colors[value];
+                shapeHeldContext.fillRect((x + 0.1) +  1.5, (y + 0.1) + 1.5, 0.8, 0.8);
+            }
+        });
+    });
+}
+
 function merge(board, player) {
     player.matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -135,6 +174,7 @@ function playerDrop() {
         playerReset();
         checkCompletedRows();
         updateScore();
+        swapped = false;
     }
     dropCounter = 0;
 }
@@ -149,10 +189,41 @@ function playerMove(direction) {
     }
 }
 
+function playerSlam() {
+    if(gameRunning) {
+        while(!collision(board, player)) {
+            player.pos.y++;
+        }
+        player.pos.y--;
+        merge(board, player);
+        playerReset();
+        checkCompletedRows();
+        updateScore();
+        swapped = false;
+    }
+}
+
+function playerHold() {
+    drawHeldMatrix(createShape(curShape));
+    if(heldShape == null) {
+        heldShape = createShape(curShape);
+        playerReset();
+    } else {
+        let playerCopy = createShape(curShape);
+        player.matrix = heldShape;
+        heldShape = playerCopy;
+        player.pos.y = 0;
+        player.pos.x = (board[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
+    }
+
+    swapped = true;
+}
+
 function playerReset() {
     const shapes = 'TIJOLSZ';
+    curShape = shapes[shapes.length * Math.random() | 0]
     if(gameRunning) {
-        player.matrix = createShape(shapes[shapes.length * Math.random() | 0]);
+        player.matrix = createShape(curShape);
         player.pos.y = 0;
         player.pos.x = (board[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
 
@@ -251,6 +322,10 @@ function resetGame() {
     player.score = 0;
     board.forEach(row => row.fill(0));
 
+    heldShape = null;
+    shapeHeldContext.fillStyle = '#151515';
+    shapeHeldContext.fillRect(0, 0, shapeHeld.width, shapeHeld.height);
+
     playerReset();
     updateScore();
     update();
@@ -275,6 +350,9 @@ const player = {
     score: 0
 };
 
+let heldShape = null;
+let swapped = false;
+
 document.addEventListener('keydown', event => {
     if(gameRunning) {
         if(event.key == "ArrowLeft") {
@@ -291,6 +369,14 @@ document.addEventListener('keydown', event => {
         }
         if(event.key == "ArrowUp") {
             playerRotate(1);
+        }
+        if(event.key == " ") {
+            playerSlam();
+        }
+        if(!swapped) {
+            if(event.key == "Shift") {
+                playerHold();
+            }
         }
     }
 });
