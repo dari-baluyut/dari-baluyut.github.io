@@ -388,7 +388,9 @@ body {
     background: #151515;
     border: solid .2em white;
     z-index: 10;
-    max-height: 20vh;
+    height: 20vh;
+    width: auto;
+
 }
 
 #gameOverText {
