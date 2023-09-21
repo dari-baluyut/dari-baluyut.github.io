@@ -189,7 +189,7 @@ function playerMove(direction) {
     }
 }
 
-function playerSlam() {
+function quickDrop() {
     if(gameRunning) {
         while(!collision(board, player)) {
             player.pos.y++;
@@ -371,7 +371,7 @@ document.addEventListener('keydown', event => {
             playerRotate(1);
         }
         if(event.key == " ") {
-            playerSlam();
+            quickDrop();
         }
         if(!swapped) {
             if(event.key == "Shift") {
