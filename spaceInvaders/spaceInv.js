@@ -1,7 +1,6 @@
 import AlienController from "./enemyController.js";
 import Player from "./player.js";
 import BulletController from "./bulletController.js";
-import Bullet from "./bullet.js";
 
 const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
