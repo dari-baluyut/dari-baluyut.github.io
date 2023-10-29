@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    font-family: 'Poppins', sans-serif;
     overflow: hidden;
 }
 
@@ -183,7 +184,7 @@ body {
 
 #pokedexLogo {
     position: absolute;
-    margin-top: 100px;
+    margin-top: 150px;
     max-width: 25%;
     max-height: 25%;
     z-index: 15;
@@ -209,7 +210,7 @@ body {
     text-decoration: none;
     visibility: hidden;
     font-size: 18px;
-    font-family: "Franklin Gothic Medium";
+    /* font-family: "Franklin Gothic Medium"; */
 }
 
 .menuButton:hover {
@@ -277,7 +278,7 @@ body {
     margin-top: 90px;
     left: 15%;
     animation: menuButtonFadeIn 2s 4s ease forwards;
-    font-family: "Franklin Gothic Medium";
+    /* font-family: "Franklin Gothic Medium"; */
 }
 
 #home-top {
@@ -397,6 +398,7 @@ body {
     position: absolute;
     margin: auto;
     margin-top: 200px;
+    margin-left: 100px;
     z-index: 15;
 }
 
@@ -412,7 +414,7 @@ body {
     position: absolute;
     animation: appear-text 5s 2s ease forwards, slideLeft 2s 3.5s ease forwards;
     font-size: 50px;
-    font-family: "Franklin Gothic Medium";
+    /* font-family: "Franklin Gothic Medium"; */
     margin-left: 525px;
     margin-top: -75px;
     margin-bottom: 100px;
@@ -435,7 +437,7 @@ body {
     animation: slidein 7s ease forwards;
     animation-delay: 3.3s;
     font-size: 50px;
-    font-family: "Franklin Gothic Medium";
+    /* font-family: "Franklin Gothic Medium"; */
 }
 
 /* #pName {
