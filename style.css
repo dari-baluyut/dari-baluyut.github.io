@@ -328,6 +328,30 @@ nav ul li a:hover::after {
     }
 }
 
+/* ---------- Capstone Project ---------- */
+#csProjInfo {
+    margin: 40px 20px 0px
+}
+
+.csProjTitle {
+    color: #ff7ce9;
+}
+
+#csProjAbout {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+#csProjAbout ul li {
+    margin-bottom: 4px;
+}
+
+#csProjLinkContainer {
+    text-align: center;
+    margin: 30px auto;
+}
+
 /* ---------- Contacts ---------- */
 #contacts {
     padding-bottom: 60px;
