@@ -37,4 +37,8 @@ export default class BulletController {
         }
         this.cooldown = cooldown;
     }
+
+    reset() {
+        this.bullets = [];
+    }
 }

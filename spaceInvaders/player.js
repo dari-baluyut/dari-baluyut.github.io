@@ -71,4 +71,9 @@ export default class Player {
             this.shootPressed = true;
         }
     };
+
+    reset() {
+        this.x = this.canvas.width / 2;
+        this.y = this.canvas.height - 75;
+    }
 }

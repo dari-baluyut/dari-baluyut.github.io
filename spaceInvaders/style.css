@@ -35,6 +35,78 @@ h1 {
     z-index: 15;
 }
 
+#scoreText {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+#scorePoints {
+    font-size: 30px;
+    color: white;
+}
+
+#resetBtn {
+    font-size: 22px;
+    color: #ff00d4;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border: #ff00d4 0.125em solid;
+    border-radius: 0.25em;
+    padding: 0.25em 1em;
+    text-shadow: 
+        0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em #ff00d4;
+    box-shadow: 
+        inset 0 0 0.5em #ff00d4,
+        0 0 0.5em #ff00d4;
+    position: relative;
+}
+
+#resetBtn::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background: #ff00d4;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+}
+
+#resetBtn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em #ff00d4;
+    opacity: 0;
+    background: #ff00d4;
+    z-index: -1;
+    transition: opacity 100ms linear;
+}
+
+#resetBtn:hover, #resetBtn:focus {
+    color: black;
+    text-shadow: none;
+}
+
+#resetBtn:hover::before, #resetBtn:focus::before {
+    opacity: 1;
+} 
+
+#resetBtn:hover::after, #resetBtn:focus::after {
+    opacity: 1;
+}
+
 .backButton {
     position: absolute;
     top: 0;

@@ -16,6 +16,8 @@ export default class AlienController {
     defaultXVelocity = 1;
     defaulyYVelocity = 1;
     
+    points = 0;
+
     defaultMoveDownTimer = 30;
     moveDownTimer = this.defaultMoveDownTimer;
 
@@ -43,6 +45,7 @@ export default class AlienController {
         this.alienRows.forEach((alienRow) => {
             alienRow.forEach((alien, alienIndex) => {
                 if(this.playerBulletController.collisionDetected(alien)) {
+                    this.points += 10;
                     alienRow.splice(alienIndex, 1);
                 }
             });
@@ -61,7 +64,6 @@ export default class AlienController {
             const alien = allAliens[alienIndex];
             
             this.enemyBulletController.shoot(alien.x, alien.y, -3);
-            console.log(alienIndex)
         }
     }
 
@@ -142,5 +144,15 @@ export default class AlienController {
 
     collisionDetected(sprite) {
         return this.alienRows.flat().some((alien) => alien.collisionDetected(sprite));
+    }
+
+    getPoints() {
+        return this.points;
+    }
+
+    reset() {
+        this.points = 0;
+        this.curDirection = MoveDirection.right;
+        this.createAliens();
     }
 }
